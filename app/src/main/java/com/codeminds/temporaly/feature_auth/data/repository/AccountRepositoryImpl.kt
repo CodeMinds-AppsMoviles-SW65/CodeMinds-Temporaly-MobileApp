@@ -11,7 +11,7 @@ import retrofit2.Response
 
 class AccountRepositoryImpl(private val accountService: AccountService) : AccountRepository {
 
-    override fun getAccount(username: String, callback: (Account) -> Unit) {
+    override fun getAccount(username: String, callback: (Account?) -> Unit) {
 
         accountService.getAccount(username).enqueue(object : Callback<AccountDto> {
 
@@ -25,7 +25,7 @@ class AccountRepositoryImpl(private val accountService: AccountService) : Accoun
             }
 
             override fun onFailure(call: Call<AccountDto>, t: Throwable) {
-                // Handle error
+                callback(null) // Handle error
             }
         })
     }
