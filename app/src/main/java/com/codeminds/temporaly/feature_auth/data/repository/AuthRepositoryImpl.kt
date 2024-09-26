@@ -16,7 +16,7 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
     override fun signIn(
         usernameOrEmail: String,
         password: String,
-        callback: (SignInResponseDto) -> Unit
+        callback: (SignInResponseDto?) -> Unit
     ) {
         val request = SignInRequestDto(usernameOrEmail, password)
 
@@ -35,7 +35,7 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
             }
 
             override fun onFailure(call: Call<SignInResponseDto>, t: Throwable) {
-                // Handle error
+                callback(null) // Handle error
             }
         })
     }
@@ -46,7 +46,7 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
         email: String,
         password: String,
         roles: List<String>,
-        callback: (SignUpResponseDto) -> Unit
+        callback: (SignUpResponseDto?) -> Unit
     ) {
         val request = SignUpRequestDto(names, lastNames, email, password, roles)
 
@@ -65,13 +65,13 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
             }
 
             override fun onFailure(call: Call<SignUpResponseDto>, t: Throwable) {
-                // Handle error
+                 callback(null) // Handle error
             }
         })
 
     }
 
-    override fun refreshToken(refreshToken: String, callback: (RefreshTokenResponseDto) -> Unit) {
+    override fun refreshToken(refreshToken: String, callback: (RefreshTokenResponseDto?) -> Unit) {
         authService.refreshToken(refreshToken).enqueue(object : Callback<RefreshTokenResponseDto> {
 
             override fun onResponse(
@@ -87,7 +87,7 @@ class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository 
             }
 
             override fun onFailure(call: Call<RefreshTokenResponseDto>, t: Throwable) {
-                // Handle error
+                callback(null) // Handle error
             }
         })
     }
