@@ -15,12 +15,6 @@ data class LocalAccountEntity (
     @ColumnInfo(name = "username")
     val username: String,
 
-    @ColumnInfo(name = "names")
-    val names: String,
-
-    @ColumnInfo(name = "lastNames")
-    val lastNames: String,
-
     @ColumnInfo(name = "token")
     val token: String
 )
@@ -28,7 +22,6 @@ data class LocalAccountEntity (
 fun LocalAccountEntity.toAccount(): Account {
     return Account(
         username = username,
-        names = names,
-        lastNames = lastNames
+        token = token
     )
 }

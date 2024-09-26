@@ -6,5 +6,5 @@ interface AccountRepository {
 
     suspend fun getAccount(username: String): Account
 
-    suspend fun getLocalAccount(): Pair<Account, String>
+    suspend fun getLocalAccount(): Account?
 }

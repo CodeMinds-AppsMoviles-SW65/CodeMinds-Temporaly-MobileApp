@@ -11,6 +11,7 @@ import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSiz
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.Modifier
 import com.codeminds.temporaly.core.presentation.theme.TemporalyTheme
+import com.codeminds.temporaly.feature_auth.presentation.sign_in.render.SignInScreen
 import com.codeminds.temporaly.feature_example.presentation.home.HomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     // Reemplazar por cualquier vista
-                    HomeScreen()
+                    SignInScreen()
                 }
             }
         }

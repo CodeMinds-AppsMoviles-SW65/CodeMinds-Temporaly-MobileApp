@@ -48,12 +48,8 @@ class AccountRepositoryImpl @Inject constructor(
             }
         }
 
-    override suspend fun getLocalAccount(): Pair<Account, String> {
+    override suspend fun getLocalAccount(): Account? {
         val account = accountDao.getAccount()
-        return if (account != null) {
-            Pair(account.toAccount(), account.token)
-        } else {
-            Pair(Account("", "", ""), "Error")
-        }
+        return account?.toAccount()
     }
 }

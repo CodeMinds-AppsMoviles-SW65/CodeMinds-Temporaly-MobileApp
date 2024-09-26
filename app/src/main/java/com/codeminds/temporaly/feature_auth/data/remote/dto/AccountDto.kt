@@ -20,6 +20,5 @@ class AccountDto(
 
 fun AccountDto.toAccount() = Account(
     username = username,
-    names = names.joinToString(" "),
-    lastNames = lastNames.joinToString(" ")
+    token = "N/A"
 )

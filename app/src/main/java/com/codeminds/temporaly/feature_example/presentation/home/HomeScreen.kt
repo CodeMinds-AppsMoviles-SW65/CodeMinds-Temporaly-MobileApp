@@ -34,6 +34,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import com.codeminds.temporaly.R
 import com.codeminds.temporaly.core.presentation.theme.TemporalyTheme
+import com.codeminds.temporaly.feature_example.domain.model.TimerTypeEnum
 import com.codeminds.temporaly.feature_example.presentation.components.AutoResizedText
 import com.codeminds.temporaly.feature_example.presentation.components.BorderedIcon
 import com.codeminds.temporaly.feature_example.presentation.components.CircleDot
