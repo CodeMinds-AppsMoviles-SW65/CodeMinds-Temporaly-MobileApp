@@ -7,88 +7,103 @@ import com.codeminds.temporaly.feature_auth.data.remote.dto.SignInResponseDto
 import com.codeminds.temporaly.feature_auth.data.remote.dto.SignUpRequestDto
 import com.codeminds.temporaly.feature_auth.data.remote.dto.SignUpResponseDto
 import com.codeminds.temporaly.feature_auth.domain.repository.AuthRepository
+import kotlinx.coroutines.suspendCancellableCoroutine
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
-class AuthRepositoryImpl(private val authService: AuthService) : AuthRepository {
+class AuthRepositoryImpl @Inject constructor(private val authService: AuthService) :
+    AuthRepository {
 
-    override fun signIn(
+    override suspend fun signIn(
         usernameOrEmail: String,
-        password: String,
-        callback: (SignInResponseDto?) -> Unit
-    ) {
+        password: String
+    ): SignInResponseDto = suspendCancellableCoroutine { continuation ->
         val request = SignInRequestDto(usernameOrEmail, password)
-
-        authService.signIn(request).enqueue(object : Callback<SignInResponseDto> {
-
-            override fun onResponse(
-                call: Call<SignInResponseDto>,
-                response: Response<SignInResponseDto>
-            ) {
+        val call = authService.signIn(request)
+        call.enqueue(object : Callback<SignInResponseDto> {
+            override fun onResponse(call: Call<SignInResponseDto>, response: Response<SignInResponseDto>) {
                 if (response.isSuccessful) {
                     val signInResponseDto = response.body()
                     if (signInResponseDto != null) {
-                        callback(signInResponseDto)
+                        continuation.resume(signInResponseDto)
+                    } else {
+                        continuation.resumeWithException(Exception("Error"))
                     }
+                } else {
+                    continuation.resumeWithException(Exception("Error"))
                 }
             }
 
             override fun onFailure(call: Call<SignInResponseDto>, t: Throwable) {
-                callback(null) // Handle error
+                continuation.resumeWithException(t)
             }
         })
+
+        continuation.invokeOnCancellation {
+            call.cancel()
+        }
     }
 
-    override fun signUp(
+    override suspend fun signUp(
         names: String,
         lastNames: String,
         email: String,
         password: String,
         roles: List<String>,
-        callback: (SignUpResponseDto?) -> Unit
-    ) {
+    ): SignUpResponseDto = suspendCancellableCoroutine { continuation ->
         val request = SignUpRequestDto(names, lastNames, email, password, roles)
-
-        authService.signUp(request).enqueue(object : Callback<SignUpResponseDto> {
-
-            override fun onResponse(
-                call: Call<SignUpResponseDto>,
-                response: Response<SignUpResponseDto>
-            ) {
+        val call = authService.signUp(request)
+        call.enqueue(object : Callback<SignUpResponseDto> {
+            override fun onResponse(call: Call<SignUpResponseDto>, response: Response<SignUpResponseDto>) {
                 if (response.isSuccessful) {
                     val signUpResponseDto = response.body()
                     if (signUpResponseDto != null) {
-                        callback(signUpResponseDto)
+                        continuation.resume(signUpResponseDto)
+                    } else {
+                        continuation.resumeWithException(Exception("Error"))
                     }
+                } else {
+                    continuation.resumeWithException(Exception("Error"))
                 }
             }
 
             override fun onFailure(call: Call<SignUpResponseDto>, t: Throwable) {
-                 callback(null) // Handle error
+                continuation.resumeWithException(t)
             }
         })
 
+        continuation.invokeOnCancellation {
+            call.cancel()
+        }
     }
 
-    override fun refreshToken(refreshToken: String, callback: (RefreshTokenResponseDto?) -> Unit) {
-        authService.refreshToken(refreshToken).enqueue(object : Callback<RefreshTokenResponseDto> {
-
-            override fun onResponse(
-                call: Call<RefreshTokenResponseDto>,
-                response: Response<RefreshTokenResponseDto>
-            ) {
+    override suspend fun refreshToken(refreshToken: String): RefreshTokenResponseDto = suspendCancellableCoroutine { continuation ->
+        val call = authService.refreshToken(refreshToken)
+        call.enqueue(object : Callback<RefreshTokenResponseDto> {
+            override fun onResponse(call: Call<RefreshTokenResponseDto>, response: Response<RefreshTokenResponseDto>) {
                 if (response.isSuccessful) {
                     val refreshTokenResponseDto = response.body()
                     if (refreshTokenResponseDto != null) {
-                        callback(refreshTokenResponseDto)
+                        continuation.resume(refreshTokenResponseDto)
+                    } else {
+                        continuation.resumeWithException(Exception("Error"))
                     }
+                } else {
+                    continuation.resumeWithException(Exception("Error"))
                 }
             }
 
             override fun onFailure(call: Call<RefreshTokenResponseDto>, t: Throwable) {
-                callback(null) // Handle error
+                continuation.resumeWithException(t)
             }
         })
+
+        continuation.invokeOnCancellation {
+            call.cancel()
+        }
     }
 }

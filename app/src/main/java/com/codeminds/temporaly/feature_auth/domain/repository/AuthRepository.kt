@@ -6,9 +6,18 @@ import com.codeminds.temporaly.feature_auth.data.remote.dto.SignUpResponseDto
 
 interface AuthRepository {
 
-    fun signIn(usernameOrEmail: String, password: String, callback: (SignInResponseDto?) -> Unit)
+    suspend fun signIn(
+        usernameOrEmail: String,
+        password: String
+    ): SignInResponseDto
 
-    fun signUp(names: String, lastNames: String, email: String, password: String, roles: List<String>, callback: (SignUpResponseDto?) -> Unit)
+    suspend fun signUp(
+        names: String,
+        lastNames: String,
+        email: String,
+        password: String,
+        roles: List<String>,
+    ): SignUpResponseDto
 
-    fun refreshToken(refreshToken: String, callback: (RefreshTokenResponseDto?) -> Unit)
+    suspend fun refreshToken(refreshToken: String): RefreshTokenResponseDto
 }

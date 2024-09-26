@@ -9,9 +9,9 @@ import javax.inject.Inject
 
 class SaveTimerSessionUseCase @Inject constructor(
     private val repository: TimerSessionRepository
-){
+) {
     operator fun invoke(timerSessionModel: TimerSessionModel): Flow<Resource<Boolean>> = flow {
-        try{
+        try {
             emit(Resource.Loading())
             emit(
                 Resource.Success(
@@ -20,7 +20,7 @@ class SaveTimerSessionUseCase @Inject constructor(
             )
 
         } catch (e: Exception) {
-            emit(Resource.Error(e.message?: "Unknown Error"))
+            emit(Resource.Error(e.message ?: "Unknown Error"))
         }
     }
 }
