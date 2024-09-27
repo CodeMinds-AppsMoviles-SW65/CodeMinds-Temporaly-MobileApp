@@ -73,6 +73,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.material3.window.size)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.compose.foundation)
+    implementation(libs.google.accompanist)
 
     // hilt
     implementation(libs.dagger.hilt)
@@ -82,7 +84,6 @@ dependencies {
     // Room
     implementation(libs.room)
     ksp(libs.room.compiler)
-    annotationProcessor(libs.room.compiler)
     implementation(libs.room.ktx)
 
     // apis
@@ -91,6 +92,7 @@ dependencies {
 
     // navigation
     implementation(libs.androidx.navigation)
+    implementation(libs.airbnb.lottie)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

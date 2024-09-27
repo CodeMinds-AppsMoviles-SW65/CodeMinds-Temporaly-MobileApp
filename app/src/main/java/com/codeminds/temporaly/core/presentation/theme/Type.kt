@@ -54,27 +54,27 @@ val Typography = Typography(
         textAlign = TextAlign.Center
     ),
     bodyMedium = TextStyle(
-        fontFamily = PoppinsFont,
-        fontWeight = FontWeight.Bold,
-        fontSize = 12.sp,
-        lineHeight = 16.sp,
-        letterSpacing = 0.5.sp,
+        fontFamily = UrbanistFont,
+        fontWeight = FontWeight.Medium,
+        fontSize = 10.sp,
+        lineHeight = 14.sp,
+        letterSpacing = 0.1.sp,
         textAlign = TextAlign.Center
     ),
     headlineLarge = TextStyle(
         fontFamily = ProductSansFont,
         fontWeight = FontWeight.Bold,
-        fontSize = 18.sp,
+        fontSize = 20.sp,
         lineHeight = 22.sp,
-        letterSpacing = 0.5.sp,
+        letterSpacing = 0.1.sp,
         textAlign = TextAlign.Center
     ),
     headlineMedium = TextStyle(
         fontFamily = ProductSansFont,
         fontWeight = FontWeight.Bold,
-        fontSize = 17.sp,
-        lineHeight = 21.sp,
-        letterSpacing = 0.5.sp,
+        fontSize = 18.sp,
+        lineHeight = 22.sp,
+        letterSpacing = 0.1.sp,
         textAlign = TextAlign.Center
     ),
     headlineSmall = TextStyle(
@@ -82,7 +82,7 @@ val Typography = Typography(
         fontWeight = FontWeight.Bold,
         fontSize = 16.sp,
         lineHeight = 20.sp,
-        letterSpacing = 0.5.sp,
+        letterSpacing = 0.1.sp,
         textAlign = TextAlign.Center
     ),
     titleLarge = TextStyle(
@@ -90,7 +90,7 @@ val Typography = Typography(
         fontWeight = FontWeight.Bold,
         fontSize = 14.sp,
         lineHeight = 18.sp,
-        letterSpacing = 0.5.sp,
+        letterSpacing = 0.1.sp,
         textAlign = TextAlign.Center
     ),
     titleMedium = TextStyle(
@@ -98,15 +98,15 @@ val Typography = Typography(
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 18.sp,
-        letterSpacing = 0.5.sp,
+        letterSpacing = 0.1.sp,
         textAlign = TextAlign.Center
     ),
     titleSmall = TextStyle(
         fontFamily = UrbanistFont,
-        fontWeight = FontWeight.Medium,
+        fontWeight = FontWeight.Bold,
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        letterSpacing = 0.5.sp,
+        letterSpacing = 0.1.sp,
         textAlign = TextAlign.Center
     ),
     labelLarge = TextStyle(
@@ -114,7 +114,7 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp,
         lineHeight = 18.sp,
-        letterSpacing = 0.5.sp,
+        letterSpacing = 0.1.sp,
         textAlign = TextAlign.Center
     ),
     labelMedium = TextStyle(
@@ -122,7 +122,7 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        letterSpacing = 0.5.sp,
+        letterSpacing = 0.1.sp,
         textAlign = TextAlign.Center
     ),
     labelSmall = TextStyle(
@@ -130,7 +130,7 @@ val Typography = Typography(
         fontWeight = FontWeight.Normal,
         fontSize = 8.sp,
         lineHeight = 12.sp,
-        letterSpacing = 0.5.sp,
+        letterSpacing = 0.1.sp,
         textAlign = TextAlign.Center
     )
 )
