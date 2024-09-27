@@ -21,17 +21,17 @@ import com.codeminds.temporaly.R
  * Date: 26/09/24 @ 16:57
  */
 @Composable
-fun FingerprintButton() {
+fun FingerprintButton(onClick : () -> Unit) {
     Box(
         modifier = Modifier
-            .size(48.dp)  // Tamaño cuadrado
-            .clip(RoundedCornerShape(12.dp))  // Bordes ligeramente redondeados, igual que el botón de "Sign In"
-            .background(Color.LightGray)  // Color gris claro
-            .clickable { /* Handle Fingerprint Click */ },
+            .size(48.dp)
+            .clip(RoundedCornerShape(12.dp))
+            .background(Color.LightGray)
+            .clickable {  onClick() },
         contentAlignment = Alignment.Center
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_fingerprint),  // Icono de huella dactilar
+            painter = painterResource(id = R.drawable.ic_fingerprint),
             contentDescription = "Fingerprint",
             tint = Color.Gray,
             modifier = Modifier.size(24.dp)

@@ -14,14 +14,14 @@ import androidx.compose.ui.text.style.TextAlign
  * Date: 26/09/24 @ 16:45
  */
 @Composable
-fun RegisterNowText() {
+fun RegisterNowText(onRegisterClick: () -> Unit) {
     Text(
         text = "Don’t have an account? Register now",
         style = MaterialTheme.typography.titleLarge,
         color = MaterialTheme.colorScheme.secondary,
         textAlign = TextAlign.Center,
         modifier = Modifier.fillMaxWidth().clickable {
-            // Handle Register now click
+            onRegisterClick()
         }
     )
 }

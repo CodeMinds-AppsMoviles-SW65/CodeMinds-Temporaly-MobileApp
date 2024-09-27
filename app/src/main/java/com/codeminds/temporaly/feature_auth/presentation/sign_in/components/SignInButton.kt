@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
  * Date: 26/09/24 @ 16:23
  */
 @Composable
-fun SignInButton() {
+fun SignInButton(onClick : () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxWidth(0.8f)
@@ -30,7 +30,7 @@ fun SignInButton() {
             .clip(RoundedCornerShape(12.dp))
             .background(MaterialTheme.colorScheme.primary)
             .clickable {
-
+                onClick()
             },
         contentAlignment = Alignment.Center
     ) {

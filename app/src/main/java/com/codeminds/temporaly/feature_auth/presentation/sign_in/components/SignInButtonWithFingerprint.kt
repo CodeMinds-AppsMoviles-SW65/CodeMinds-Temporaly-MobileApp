@@ -16,14 +16,17 @@ import androidx.compose.ui.unit.dp
  * Date: 26/09/24 @ 16:57
  */
 @Composable
-fun SignInButtonWithFingerprint() {
+fun SignInButtonWithFingerprint(
+    onClick: () -> Unit,
+    onFingerprintClick: () -> Unit
+) {
     Row(
         modifier = Modifier.fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        SignInButton()
+        SignInButton( onClick = onClick)
         Spacer(modifier = Modifier.width(8.dp))
-        FingerprintButton()
+        FingerprintButton(onClick = onFingerprintClick)
     }
 }

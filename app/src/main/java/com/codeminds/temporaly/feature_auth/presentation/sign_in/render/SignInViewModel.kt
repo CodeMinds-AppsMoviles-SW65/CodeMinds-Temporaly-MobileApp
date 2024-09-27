@@ -42,16 +42,20 @@ class SignInViewModel @Inject constructor(private val signInUseCase: SignInUseCa
     fun signIn() {
         signInUseCase(_email.value, _password.value).onEach { result ->
             when (result) {
-                is Resource.Success -> {
+                is Resource.Loading -> {
                     _state.value = ViewModelState(isLoading = true)
                 }
-                is Resource.Loading -> {
+                is Resource.Success -> {
                     _state.value = ViewModelState(data = result.data?.toAccount())
                 }
                 is Resource.Error -> {
-                    _state.value = ViewModelState(error = result.message)
+                    _state.value = ViewModelState( error = result.message?:"Can't sign in" )
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    fun clearError() {
+        _state.value = ViewModelState()
     }
 }

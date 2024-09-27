@@ -14,14 +14,14 @@ import androidx.compose.ui.text.style.TextAlign
  * Date: 26/09/24 @ 16:19
  */
 @Composable
-fun ForgotPasswordText() {
+fun ForgotPasswordText(onForgotPasswordClick: () -> Unit) {
     Text(
         text = "Forgot Password?",
         color = MaterialTheme.colorScheme.secondary,
         style = MaterialTheme.typography.headlineSmall,
         textAlign = TextAlign.End,
         modifier = Modifier.fillMaxWidth().clickable {
-            // Handle forgot password click
+            onForgotPasswordClick()
         }
     )
 }
