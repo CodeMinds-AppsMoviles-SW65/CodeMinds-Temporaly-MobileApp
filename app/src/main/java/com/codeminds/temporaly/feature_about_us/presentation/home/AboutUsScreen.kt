@@ -22,6 +22,7 @@ fun AboutUsScreen(modifier: Modifier = Modifier) {
     )
 
     var showDialog by remember { mutableStateOf(false) }
+    var showDialogPrivacyPolice by remember { mutableStateOf(false) }
 
     Scaffold(
         topBar = {
@@ -55,7 +56,23 @@ fun AboutUsScreen(modifier: Modifier = Modifier) {
             }
 
             // Sección Privacy Policy
-            PrivacyPolicySection(fontFamily = workSansFontFamily)
+            PrivacyPolicySection(
+                fontFamily = workSansFontFamily ,
+                onClick = { showDialogPrivacyPolice = true }
+            )
+            if(showDialogPrivacyPolice) {
+                PrivacyPolicyDialog(
+                    showDialog = showDialogPrivacyPolice,
+                    onDismiss = { showDialogPrivacyPolice = false },
+                    fontFamily = workSansFontFamily
+                )
+            }
+            ConsentSection(
+                fontFamily = workSansFontFamily,
+                onContactClick = { /* Navegar a la página de contacto o mostrar información de contacto */ }
+            )
+
+
         }
     }
 }
