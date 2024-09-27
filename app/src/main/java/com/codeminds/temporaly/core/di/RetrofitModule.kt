@@ -13,8 +13,8 @@ import javax.inject.Singleton
 object RetrofitModule {
 
     @Provides
-    fun provideBaseUrl(): String = "http://10.0.2.2:7645/api/v1/"
-//    fun provideBaseUrl(): String = "https://temporally-api.ryzeon.me/api/v1/"
+//    fun provideBaseUrl(): String = "http://10.0.2.2:7645/api/v1/"
+    fun provideBaseUrl(): String = "https://temporally-api.ryzeon.me/api/v1/"
 
     @Provides
     @Singleton
