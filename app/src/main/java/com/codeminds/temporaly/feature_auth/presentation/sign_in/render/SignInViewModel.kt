@@ -46,7 +46,7 @@ class SignInViewModel @Inject constructor(private val signInUseCase: SignInUseCa
                     _state.value = ViewModelState(isLoading = true)
                 }
                 is Resource.Success -> {
-                    _state.value = ViewModelState(data = result.data?.toAccount())
+                    _state.value = ViewModelState(data = result.data?.toAccount(), success = true)
                 }
                 is Resource.Error -> {
                     _state.value = ViewModelState( error = result.message?:"Can't sign in" )

@@ -30,8 +30,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     // Reemplazar por cualquier vista
-//                    SignInScreen()
-                    SignUpScreen()
+                    SignInScreen()
+//                    SignUpScreen()
                 }
             }
         }
