@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -40,7 +41,7 @@ fun TermsAndConditionsDialog(
                 ) {
                     Text(
                         text = """
-                                                        TERMS AND CONDITIONS
+                            TERMS AND CONDITIONS
                             
                             Last updated September 26, 2024
                             
@@ -348,7 +349,8 @@ fun TermsAndConditionsDialog(
                         style = TextStyle(
                             fontFamily = fontFamily,
                             fontWeight = FontWeight.Medium,
-                            fontSize = 16.sp
+                            fontSize = 16.sp,
+                            textAlign = TextAlign.Justify
                         )
                     )
                 }
