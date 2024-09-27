@@ -12,11 +12,9 @@ interface AuthRepository {
     ): SignInResponseDto
 
     suspend fun signUp(
-        names: String,
-        lastNames: String,
+        username: String,
         email: String,
-        password: String,
-        roles: List<String>,
+        password: String
     ): SignUpResponseDto
 
     suspend fun refreshToken(refreshToken: String): RefreshTokenResponseDto

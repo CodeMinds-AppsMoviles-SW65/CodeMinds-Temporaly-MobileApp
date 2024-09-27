@@ -1,4 +1,4 @@
-package com.codeminds.temporaly.feature_auth.presentation.sign_in.components
+package com.codeminds.temporaly.feature_auth.presentation.shared.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

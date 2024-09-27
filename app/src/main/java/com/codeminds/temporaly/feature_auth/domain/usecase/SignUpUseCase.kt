@@ -10,15 +10,13 @@ import javax.inject.Inject
 class SignUpUseCase @Inject constructor(private val authRepository: AuthRepository) {
 
     operator fun invoke(
-        names: String,
-        lastNames: String,
+        username: String,
         email: String,
-        password: String,
-        roles: List<String>
+        password: String
     ): Flow<Resource<SignUpResponseDto>> = flow {
         try {
             emit(Resource.Loading())
-            val signUpResponseDto = authRepository.signUp(names, lastNames, email, password, roles)
+            val signUpResponseDto = authRepository.signUp(username, email, password)
             emit(Resource.Success(data = signUpResponseDto))
         } catch (e: Exception) {
             emit(Resource.Error(e.message ?: "Unknown Error"))

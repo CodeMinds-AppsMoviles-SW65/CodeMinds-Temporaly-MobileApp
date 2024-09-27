@@ -22,21 +22,27 @@ class AuthRepositoryImpl @Inject constructor(private val authService: AuthServic
         if (response.isSuccessful) {
             response.body() ?: throw Exception("An error occurred")
         } else {
+            val errorBody = response.errorBody()?.string()
+            if (errorBody != null) {
+                throw Exception(errorBody)
+            }
             throw Exception("Check your credentials")
         }
     }
 
     override suspend fun signUp(
-        names: String,
-        lastNames: String,
+        username: String,
         email: String,
         password: String,
-        roles: List<String>,
     ): SignUpResponseDto = withContext(Dispatchers.IO) {
-        val response = authService.signUp(SignUpRequestDto(names, lastNames, email, password, roles))
+        val response = authService.signUp(SignUpRequestDto(username, email, password))
         if (response.isSuccessful) {
             response.body() ?: throw Exception("An error occurred")
         } else {
+            val errorBody = response.errorBody()?.string()
+            if (errorBody != null) {
+                throw Exception(errorBody)
+            }
             throw Exception("An error occurred")
         }
     }

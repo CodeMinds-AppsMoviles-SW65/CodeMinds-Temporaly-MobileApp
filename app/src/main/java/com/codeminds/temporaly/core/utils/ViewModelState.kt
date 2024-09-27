@@ -8,5 +8,6 @@ package com.codeminds.temporaly.core.utils
 data class ViewModelState<T> (
     val isLoading: Boolean = false,
     val data : T? = null,
-    val error: String = ""
+    val error: String = "",
+    val success: Boolean = false
 )
