@@ -52,7 +52,7 @@ class SignUpViewModel @Inject constructor(private val signUpUseCase: SignUpUseCa
                     _state.value = ViewModelState(isLoading = true)
                 }
                 is Resource.Success -> {
-                    _state.value = ViewModelState()
+                    _state.value = ViewModelState(success = true, data = null)
                 }
                 is Resource.Error -> {
                     _state.value = ViewModelState(error = result.message?:"Can't sign up")

@@ -60,7 +60,7 @@ fun SignUpScreen(viewModel: SignUpViewModel = hiltViewModel()) {
         )
     }
 
-    if (signUpState.data != null && signUpState.success) {
+    if (signUpState.data != null || signUpState.success) {
         val context = LocalContext.current
         LaunchedEffect(signUpState.data) {
             Toast.makeText(context, "Registration was successful", Toast.LENGTH_LONG).show()
